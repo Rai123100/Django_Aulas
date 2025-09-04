@@ -1,0 +1,53 @@
+{% extends 'medico/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <!-- Cabeçalho -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Lista de Especialidades</h2>
+        <a href="{% url 'cadastrar_especialidade' %}" class="btn btn-primary">
+            ➕ Adicionar Especialidade
+        </a>
+    </div>
+
+    <!-- Tabela -->
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Código</th>
+                        <th>Descrição</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for especialidade in especialidades %}
+                    <tr>
+                        <td>{{ especialidade.nome }}</td>
+                        <td>{{ especialidade.id_especialidade }}</td>
+                        <td>{{ especialidade.descricao|truncatechars:30 }}</td>
+                        <td class="text-center">
+                            <a href="#" class="btn btn-sm btn-outline-secondary me-2">
+                                <img src="{% static 'css/img/Lapis(Edição).png' %}" alt="Editar" width="18">
+                            </a>
+                            <a href="#" class="btn btn-sm btn-outline-danger">
+                                <img src="{% static 'css/img/Lixeira(Edição).png' %}" alt="Excluir" width="18">
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted">Nenhuma especialidade encontrada.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
