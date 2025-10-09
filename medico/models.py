@@ -18,7 +18,7 @@ class medico(models.Model):
     email = models.EmailField(unique=True)
     data_nascimento = models.DateField()
     crm = models.CharField(max_length=50, unique=True)
-    id_especialidade = models.ForeignKey(especialidade, on_delete=models.CASCADE, related_name="medico")
+    especialidade = models.ForeignKey(especialidade, on_delete=models.CASCADE, related_name="especialidades")
 
     def __str__(self):
         return f"{self.nome} - {self.id_especialidade.nome}"
