@@ -41,42 +41,42 @@ def cadastrar_especialidade(request):
 
 class EspecialidadeListView(ListView):
     model = especialidade
-    template_name = 'especialidade_view.html'
+    template_name = "medico/especialidade_view.html"
 
 class EspecialidadeCreateView(CreateView):
     model = especialidade
     form_class = EspecialidadeForm
-    template_name = 'especialidade_form.html'
-    success_url = reverse_lazy('especialidade_view')
+    template_name = 'medico/especialidade_form.html'
+    success_url = reverse_lazy('especialidade_list')
 
 class EspecialidadeUpdateView(UpdateView):
     model = especialidade
     form_class = EspecialidadeForm
-    template_name = 'especialidade_form.html'
-    success_url = reverse_lazy('especialidade_view')
+    template_name = 'medico/especialidade_form.html'
+    success_url = reverse_lazy('medico/especialidade_view.html')
 
 class EspecialidadeDeleteView(DeleteView):
     model = especialidade
-    template_name = 'especialidade_confirm_delete.html'
-    success_url = reverse_lazy('especialidade_view')
+    template_name = 'medico/especialidade_confirm_delete.html'
+    success_url = reverse_lazy('medico/especialidade_view.html')
 
 class MedicoListView(ListView):
     model = medico
-    template_name = 'medico_view.html'
+    template_name = 'medico/medico_view.html'
 
 class MedicoCreateView(CreateView):
     model = medico
     form_class = MedicoForm
-    template_name = 'medico_form.html'
-    success_url = reverse_lazy('medico_view')
+    template_name = 'medico/medico_form.html'
+    success_url = reverse_lazy('medico/medico_view.html')
 
 class MedicoUpdateView(UpdateView):
     model = medico
     form_class = MedicoForm
-    template_name = 'medico_form.html'
-    success_url = reverse_lazy('medico_view')
+    template_name = 'medico/medico_form.html'
+    success_url = reverse_lazy('medico/medico_view.html')
 
 class MedicoDeleteView(DeleteView):
     model = medico
-    template_name = 'medico_confirm_delete.html'
-    success_url = reverse_lazy('medico_view')
+    template_name = 'medico/medico_confirm_delete.html'
+    success_url = reverse_lazy('medico/medico_view.html')

@@ -41,11 +41,11 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'lista_medicos' %}active{% endif %}" 
-                               href="{% url 'lista_medicos' %}">Médicos</a>
+                               href="{% url 'medico_list' %}">Médicos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.resolver_match.url_name == 'lista_especialidades' %}active{% endif %}" 
-                                href="{% url 'lista_especialidades' %}">Especialidades</a>
+                                href="{% url 'especialidade_list' %}">Especialidades</a>
                         </li>
                     </ul>
                 </div>
