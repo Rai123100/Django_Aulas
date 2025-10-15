@@ -31,10 +31,10 @@
                         <td>{{ especialidade.id_especialidade }}</td>
                         <td>{{ especialidade.descricao|truncatechars:30 }}</td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-sm btn-outline-secondary me-2">
+                            <a href="{% url 'especialidade_edit' especialidade.pk %}" class="btn btn-sm btn-outline-secondary me-2">
                                 <img src="{% static 'css/img/Lapis(Edição).png' %}" alt="Editar" width="18">
                             </a>
-                            <a href="#" class="btn btn-sm btn-outline-danger">
+                            <a href="{% url 'especialidade_delete' especialidade.pk %}" class="btn btn-sm btn-outline-danger">
                                 <img src="{% static 'css/img/Lixeira(Edição).png' %}" alt="Excluir" width="18">
                             </a>
                         </td>

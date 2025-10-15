@@ -1,0 +1,29 @@
+{% extends "medico/base.html" %}
+{% load static %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body text-center py-5">
+            <h2 class="text-danger mb-4">⚠️ Confirmar Exclusão</h2>
+            <p class="lead mb-4">
+                Tem certeza de que deseja excluir 
+                <strong>{{ object.nome }}</strong>?
+            </p>
+            <p class="text-muted">Esta ação não poderá ser desfeita.</p>
+
+            <form method="post" class="mt-4">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger px-4 py-2 me-2">
+                    Sim, excluir
+                </button>
+                <a href="{% url 'especialidade_view' %}" class="btn btn-secondary px-4 py-2">
+                    Cancelar
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
