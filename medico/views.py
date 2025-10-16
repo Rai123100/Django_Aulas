@@ -3,6 +3,7 @@ from .models import medico, especialidade
 from .forms import MedicoForm, EspecialidadeForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
 # Create your views here.
 # def lista_medicos(request):
@@ -37,49 +38,59 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 #     return render(request, "medico/adicionar_especialidade.html", {"form": form})
 
-# ---------------------------------------------------------------------------------------------------------------
 
-class EspecialidadeListView(ListView):
+
+# ----------------------- ESPECIALIDADE -----------------------
+
+class EspecialidadeListView(LoginRequiredMixin, ListView):
     model = especialidade
     context_object_name = "especialidades"
     template_name = "medico/especialidade_view.html"
 
-class EspecialidadeCreateView(CreateView):
+class EspecialidadeCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    permission_required = 'medico.add_especialidade'
     model = especialidade
     form_class = EspecialidadeForm
     template_name = 'medico/especialidade_form.html'
     success_url = reverse_lazy('especialidade_view')
 
-class EspecialidadeUpdateView(UpdateView):
+class EspecialidadeUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    permission_required = 'medico.change_especialidade'
     model = especialidade
     form_class = EspecialidadeForm
     template_name = 'medico/especialidade_form.html'
     success_url = reverse_lazy('especialidade_view')
 
-class EspecialidadeDeleteView(DeleteView):
+class EspecialidadeDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    permission_required = 'medico.delete_especialidade'
     model = especialidade
     template_name = 'medico/especialidade_confirm_delete.html'
     success_url = reverse_lazy('especialidade_view')
 
 
-class MedicoListView(ListView):
+# ----------------------- MÉDICO -----------------------
+
+class MedicoListView(LoginRequiredMixin, ListView):
     model = medico
     context_object_name = "medicos"
     template_name = 'medico/medico_view.html'
 
-class MedicoCreateView(CreateView):
+class MedicoCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    permission_required = 'medico.add_medico'
     model = medico
     form_class = MedicoForm
     template_name = 'medico/medico_form.html'
     success_url = reverse_lazy('medico_view')
 
-class MedicoUpdateView(UpdateView):
+class MedicoUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    permission_required = 'medico.change_medico'
     model = medico
     form_class = MedicoForm
     template_name = 'medico/medico_form.html'
     success_url = reverse_lazy('medico_view')
 
-class MedicoDeleteView(DeleteView):
+class MedicoDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    permission_required = 'medico.delete_medico'
     model = medico
     template_name = 'medico/medico_confirm_delete.html'
     success_url = reverse_lazy('medico_view')
